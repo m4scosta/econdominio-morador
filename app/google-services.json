@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "76880617610",
+    "firebase_url": "https://econdominio-a0141.firebaseio.com",
+    "project_id": "econdominio-a0141",
+    "storage_bucket": "econdominio-a0141.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76880617610:android:8aec70bff90bfe84",
+        "android_client_info": {
+          "package_name": "br.com.econdominio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76880617610-tf4155hc2asiucruolb9d7nbojcu2ghc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA8ObBnMTNK4KtkMZ8X7YdZf730DB_3rY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

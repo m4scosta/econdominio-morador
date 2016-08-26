@@ -1,0 +1,24 @@
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.NormalText">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="AppTheme.CommentText" parent="AppTheme.NormalText">
+        <item name="android:textColor">@color/secondaryText</item>
+    </style>
+
+    <style name="AppTheme.SmallText">
+        <item name="android:textColor">@color/secondaryText</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+</resources>
