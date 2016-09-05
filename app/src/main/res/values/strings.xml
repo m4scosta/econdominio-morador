@@ -38,4 +38,18 @@
     <string name="parse_app_id">iOvV1YDthJGCOfiqsXHMZA9LdKiNblOGVXqPxOTT</string>
     <string name="parse_client_key">IzJG247JYrzlWByLHYMXjefv8aCojpwdTe2Yvfj2</string>
     <string name="parse_gcm_sender_id">76880617610</string>
+
+    <!-- Generic strings -->
+    <string name="empty_list">Lista vazia</string>
+
+    <!-- Error messages -->
+    <string name="error_loading">Erro ao carregar informações, tente novamente.</string>
+    <string name="title_activity_new_or_edit_visitor">Cadastro de visitante</string>
+
+    <!-- Visitor form strings -->
+    <string name="visitor_form_hint_photo">Foto:</string>
+    <string name="visitor_form_hint_name">Nome</string>
+    <string name="visitor_form_hint_rg">RG</string>
+    <string name="visitor_form_save">Salvar</string>
+
 </resources>

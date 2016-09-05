@@ -89,10 +89,10 @@ public class AppBaseActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_notifications && currentLayoutID != R.layout.content_main) {
-            navigateTo(MainActivity.class);
+            navigateTo(MainActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK);
         }
         if (id == R.id.nav_visitors && currentLayoutID != R.layout.content_visitor) {
-            navigateTo(VisitorsActivity.class);
+            navigateTo(VisitorsActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK);
         }
         if (id == R.id.nav_signout) {
             signOut();
@@ -104,12 +104,13 @@ public class AppBaseActivity
 
     private void signOut() {
         ParseUser.logOut();
-        navigateTo(LoginActivity.class);
+        navigateTo(LoginActivity.class,
+                Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
     }
 
-    private void navigateTo(Class<?> activityClass) {
+    protected void navigateTo(Class<?> activityClass, int flags) {
         Intent intent = new Intent(this, activityClass);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(flags);
         startActivity(intent);
     }
 }
