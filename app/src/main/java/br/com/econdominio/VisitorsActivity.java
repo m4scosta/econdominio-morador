@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,6 +24,8 @@ import java.util.List;
 public final class VisitorsActivity extends AppBaseActivity implements FindCallback<ParseObject> {
 
     private static final String TAG = VisitorsActivity.class.getName();
+
+    private static final int CREATE_VISITOR = 1;
 
     private ListView visitorList;
     private View emptyListView;
@@ -54,9 +55,17 @@ public final class VisitorsActivity extends AppBaseActivity implements FindCallb
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateTo(NewOrEditVisitorActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent intent = new Intent(VisitorsActivity.this, NewOrEditVisitorActivity.class);
+                startActivityForResult(intent, CREATE_VISITOR);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CREATE_VISITOR && resultCode == RESULT_OK) {
+            fetchVisitors();
+        }
     }
 
     private void fetchVisitors() {
@@ -64,7 +73,8 @@ public final class VisitorsActivity extends AppBaseActivity implements FindCallb
 
         ParseUser currentUser = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Visitor");
-        query.whereEqualTo("residence", currentUser.getUsername()); // TODO: adicionar esta informacao ao cadastro de usuarios
+        // TODO: adicionar esta informacao ao cadastro de usuarios
+        query.whereEqualTo("residence", currentUser.getUsername());
         query.findInBackground(this);
     }
 
