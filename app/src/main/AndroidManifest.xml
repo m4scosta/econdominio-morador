@@ -27,12 +27,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <meta-data
             android:name="com.parse.push.gcm_sender_id"
             android:value="id:76880617610" />
+
         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="@string/parse_app_id" />
+
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/parse_client_key" />
@@ -46,10 +49,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".visitors.VisitorsActivity"
             android:label="@string/title_activity_visitors"
@@ -67,8 +72,9 @@
                 <category android:name="br.com.econdominio" />
             </intent-filter>
         </receiver>
+
         <receiver
-            android:name=".items.NotificationReceiver"
+            android:name=".notifications.NotificationReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
