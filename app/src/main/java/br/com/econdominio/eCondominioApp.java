@@ -5,6 +5,7 @@ import android.app.Application;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseInstallation;
+import com.parse.ParseUser;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -34,6 +35,7 @@ public class eCondominioApp extends Application {
     private void saveInstallation() {
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
         installation.put("GCMSenderId", getResources().getString(R.string.parse_gcm_sender_id));
+        installation.put("active", ParseUser.getCurrentUser().isAuthenticated());
         installation.saveInBackground();
     }
 

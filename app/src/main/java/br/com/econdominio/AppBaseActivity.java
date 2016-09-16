@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 
 import br.com.econdominio.visitors.VisitorsActivity;
@@ -105,6 +106,10 @@ public class AppBaseActivity
     }
 
     private void signOut() {
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        installation.put("active", false);
+        installation.saveInBackground();
+
         ParseUser.logOut();
         navigateTo(LoginActivity.class,
                 Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

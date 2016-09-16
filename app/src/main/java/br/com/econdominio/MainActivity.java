@@ -80,6 +80,7 @@ public class MainActivity extends AppBaseActivity implements NotifiableActivity 
         queries.add(condoQuery);
 
         ParseQuery<ParseObject> mainQuery = ParseQuery.or(queries);
+        mainQuery.orderByDescending("createdAt");
         mainQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> results, ParseException e) {

@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 
 /**
@@ -151,12 +152,20 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(TAG, "signInWithEmail:onComplete:" + (e == null));
                     if (e == null) {
                         Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getEmail());
-                        Toast t = Toast.makeText(getApplicationContext(), "Signed in", Toast.LENGTH_SHORT);
-                        t.show();
+                        Toast.makeText(LoginActivity.this, "Entrou", Toast.LENGTH_SHORT)
+                                .show();
+
+                        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                        installation.put("active", true);
+                        installation.put("username", ParseUser.getCurrentUser().getUsername());
+                        installation.put("condo", ParseUser.getCurrentUser().get("condo"));
+                        installation.saveInBackground();
+
                         navigateToMainActivity();
                     } else {
                         Log.w(TAG, "signInWithEmail", e);
-                        Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Falha ao entrar.", Toast.LENGTH_SHORT)
+                                .show();
                     }
                     showProgress(false);
                 }

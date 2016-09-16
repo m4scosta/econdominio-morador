@@ -1,3 +1,5 @@
+var Condo = Parse.Object.extend('Condo');
+
 Parse.Cloud.afterSave('Notification', function (request) {
     var notification = request.object;
     var query = new Parse.Query(Parse.Installation);
@@ -10,9 +12,10 @@ Parse.Cloud.afterSave('Notification', function (request) {
         console.log("Will send " + type + " to " + notification.get("username"));
     }
     else if (type === 'condo_notice') {
-        var condo = notification.get("condo");
-        query.equalTo('condo', condo);
-        console.log("Will send " + type + " to condominos from " + condo);
+        var condoQuery = new Parse.Query(Condo);
+        condoQuery.equalTo('objectId', notification.get('condo'));
+        query.matchesQuery('condo', condoQuery);
+        console.log("Will send " + type + " to condominos from " + notification.get('condo'));
     }
 
     Parse.Push.send(
